@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
+    Transform[] points;
     public Transform pointPrefab;
+    [Range(10, 100)]
+    public int resolution = 10;
 
     void Awake()
     {
-        Vector3 scale = Vector3.one / 5f;
+        float step = 2f / resolution;
+        Vector3 scale = Vector3.one * step;
         Vector3 position;
+        position.y = Mathf.Sin(position.x);
         position.z = 0f;
-        for (int i = 0; i < 10; i++) {
+        points = new Transform[resolution];
+        for (int i = 0; i < resolution; i++)
+        {
             Transform point = Instantiate(pointPrefab);
-            position.x = (i + 0.5f) / 5f - 1f;
-            position.y = position.x * position.x; // position.y = position.x; for y=x graph
+            position.x = (i + 0.5f) / step - 1f;
             point.localPosition = position;
             point.localScale = scale;
+            point.SetParent(transform, false);
+            points[i] point;
+        }
+    }
+
+    void Update()
+    {
+        for (int i = 0; i < points.Length; i++) {
+            Transform point = points[i];
+            Vector3 position = point.localPosition;
+            position.y = position.x * position.x * position.x;
+            point.localPosition = position;
         }
     }
 }
