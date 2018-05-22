@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 540285275}
   - component: {fileID: 540285274}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointPrefab: {fileID: 4709144634574492, guid: 4650d43348569184a846b6ed8a68dd8e,
     type: 2}
+  resolution: 50
 --- !u!4 &540285275
 Transform:
   m_ObjectHideFlags: 0
